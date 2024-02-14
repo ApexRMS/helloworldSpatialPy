@@ -36,7 +36,7 @@ for i in range(1, run_settings.MaximumIteration.item() + 1):
                                     "yCum": y_cum})
 
     # Append temporary data frame to output data frame
-    my_output_dataframe = my_output_dataframe.append(temp_data_frame)
+    my_output_dataframe = pd.concat([my_output_dataframe, temp_data_frame])
 
 # Save the output DataFrame to the Scenario output Datasheet
 myScenario.save_datasheet(name="OutputDatasheet",

@@ -29,7 +29,7 @@ m_mean = my_input_dataframe.mMean.item()
 m_sd = my_input_dataframe.mSD.item()
 
 # Load raster input
-raster_map = myScenario.datasheet_raster(datasheet="InputDatasheet",
+raster_map = myScenario.datasheet_rasters(datasheet="InputDatasheet",
                                          column="InterceptRasterFile")
 raster_values = raster_map.values()
 
@@ -68,7 +68,7 @@ for i in range(1, run_settings.MaximumIteration.item() + 1):
                                     "OutputRasterFile": filename_list})
 
     # Append temporary data frame to output data frame
-    my_output_dataframe = my_output_dataframe.append(temp_data_frame)
+    my_output_dataframe = pd.concat([my_output_dataframe, temp_data_frame])
 
 # Save the output DataFrame to the Scenario output Datasheet
 myScenario.save_datasheet(name="IntermediateDatasheet",
