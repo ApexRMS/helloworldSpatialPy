@@ -15,26 +15,27 @@ myScenario = ps.Scenario()
 temp_folder_path = ps.runtime_temp_folder("OutputExportMap")
 
 # Load Run Control Datasheet to set timesteps
-run_settings = myScenario.datasheets(name="RunControl")
+run_settings = myScenario.datasheets(name="helloworldSpatialPy_RunControl")
+
 
 # Set timesteps
 timesteps = np.array(range(run_settings.MinimumTimestep.item(),
                            run_settings.MaximumTimestep.item() + 1))
 
 # Load Scenario's input Datasheet from SyncroSim Library into DataFrame
-my_input_dataframe = myScenario.datasheets(name="InputDatasheet")
+my_input_dataframe = myScenario.datasheets(name="helloworldSpatialPy_InputDatasheet")
 
 # Extract model inputs from Input DataFrame
 m_mean = my_input_dataframe.mMean.item()
 m_sd = my_input_dataframe.mSD.item()
 
 # Load raster input
-raster_map = myScenario.datasheet_rasters(datasheet="InputDatasheet",
+raster_map = myScenario.datasheet_rasters(datasheet="helloworldSpatialPy_InputDatasheet",
                                          column="InterceptRasterFile")
 raster_values = raster_map.values()
 
 # Set up empty pandas DataFrame to accept output values
-my_output_dataframe = myScenario.datasheets(name="IntermediateDatasheet",
+my_output_dataframe = myScenario.datasheets(name="helloworldSpatialPy_IntermediateDatasheet",
                                             empty=True)
 
 # For loop through iterations
@@ -71,5 +72,5 @@ for i in range(1, run_settings.MaximumIteration.item() + 1):
     my_output_dataframe = pd.concat([my_output_dataframe, temp_data_frame])
 
 # Save the output DataFrame to the Scenario output Datasheet
-myScenario.save_datasheet(name="IntermediateDatasheet",
+myScenario.save_datasheet(name="helloworldSpatialPy_IntermediateDatasheet",
                           data=my_output_dataframe)
