@@ -16,7 +16,7 @@
 	<!--First Model Outputs / Second Model Inputs-->
 	<dataSheet name="IntermediateDatasheet" displayName="Intermediate Outputs" hasIteration="True" hasTimestep="True">
 		<column name="y" dataType="Double" displayName="Value for y"/>
-		<column name="OutputRasterFile" displayName="Output Raster File" dataType="String" isExternalFile="True" isRaster="True" bandColumn="Band" filenameCode="hw"/>
+		<column name="OutputRasterFile" displayName="Output Raster File" dataType="String" isExternalFile="True" isRaster="True" bandColumn="Band"/>
 		<column name="Band" displayName="Band" dataType="Integer" allowDbNull="True" isOptional="True"/>
 	</dataSheet>
 
@@ -28,14 +28,14 @@
 	<!--Transformers-->
 
 	<!--First Transformer-->
-	<transformer name="firstModel" displayName="First Model" programArguments="model.py" condaEnv="helloworldPy.yml" condaEnvVersion = "1">
+	<transformer name="firstModel" displayName="First Model" programArguments="model.py" condaEnv="helloworldPy.yml" condaEnvVersion="1">
 		<dataSheet name="RunControl" type="Input"/>
 		<dataSheet name="InputDatasheet" type="Input"/>
 		<dataSheet name="IntermediateDatasheet" type="Output"/>
 	</transformer>
 
 	<!--Second Transformer-->
-	<transformer name="secondModel" displayName="Second Model" programArguments="model2.py" condaEnv="helloworldPy.yml" condaEnvVersion = "1">
+	<transformer name="secondModel" displayName="Second Model" programArguments="model2.py" condaEnv="helloworldPy.yml" condaEnvVersion="1">
 		<dataSheet name="RunControl" type="Input"/>
 		<dataSheet name="IntermediateDatasheet" type="Input"/>
 		<dataSheet name="OutputDatasheet" type="Output"/>
