@@ -1,3 +1,4 @@
+# Load GDAL
 from osgeo import gdal
 
 # Load SyncroSim python package
