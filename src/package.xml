@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package name="helloworldSpatialPy" displayName="Hello World Spatial (Python)" description="Example demonstrating how to use spatial data with a Python model" version="2.0.0" url="https://apexrms.github.io/helloworldEnhanced/">
+<package name="helloworldSpatialPy" displayName="Hello World Spatial (Python)" description="Example demonstrating how to use spatial data with a Python model" version="2.0.1" url="https://apexrms.github.io/helloworldEnhanced/">
 
 	<!--Scenario Datasheets-->
 
@@ -28,14 +28,14 @@
 	<!--Transformers-->
 
 	<!--First Transformer-->
-	<transformer name="firstModel" displayName="Hello World Spatial 1 (Python)" programArguments="model.py" condaEnv="helloworldPy.yml" condaEnvVersion="1">
+	<transformer name="firstModel" displayName="Hello World Spatial 1 (Python)" programArguments="model.py" condaEnv="helloworldPy.yml" condaEnvVersion="2">
 		<dataSheet name="RunControl" type="Input"/>
 		<dataSheet name="InputDatasheet" type="Input"/>
 		<dataSheet name="IntermediateDatasheet" type="Output"/>
 	</transformer>
 
 	<!--Second Transformer-->
-	<transformer name="secondModel" displayName="Hello World Spatial 2 (Python)" programArguments="model2.py" condaEnv="helloworldPy.yml" condaEnvVersion="1">
+	<transformer name="secondModel" displayName="Hello World Spatial 2 (Python)" programArguments="model2.py" condaEnv="helloworldPy.yml" condaEnvVersion="2">
 		<dataSheet name="RunControl" type="Input"/>
 		<dataSheet name="IntermediateDatasheet" type="Input"/>
 		<dataSheet name="OutputDatasheet" type="Output"/>
