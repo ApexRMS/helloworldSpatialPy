@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package name="helloworldSpatialPy" displayName="Hello World Spatial (Python)" description="Example demonstrating how to use spatial data with a Python model" version="2.0.0" url="https://apexrms.github.io/helloworldEnhanced/">
+<package name="helloworldSpatialPy" displayName="Hello World Spatial (Python)" description="Example demonstrating how to use spatial data with a Python model" version="2.1.0" url="https://apexrms.github.io/helloworldEnhanced/">
 
 	<!--Scenario Datasheets-->
 
