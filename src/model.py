@@ -20,26 +20,29 @@ temp_folder_path = ps.runtime_temp_folder("OutputExportMap")
 # Load Run Control Datasheet to set timesteps
 run_settings = myScenario.datasheets(name="helloworldSpatialPy_RunControl")
 
-
 # Set timesteps
 timesteps = np.array(range(run_settings.MinimumTimestep.item(),
                            run_settings.MaximumTimestep.item() + 1))
 
 # Load Scenario's input Datasheet from SyncroSim Library into DataFrame
-my_input_dataframe = myScenario.datasheets(name="helloworldSpatialPy_InputDatasheet")
+my_input_dataframe = myScenario.datasheets(
+    name="helloworldSpatialPy_InputDatasheet",
+    show_full_paths=True)
 
 # Extract model inputs from Input DataFrame
 m_mean = my_input_dataframe.mMean.item()
 m_sd = my_input_dataframe.mSD.item()
 
 # Load raster input
-raster_map = myScenario.datasheet_rasters(datasheet="helloworldSpatialPy_InputDatasheet",
-                                         column="InterceptRasterFile")
-raster_values = raster_map.values()
+raster_path = my_input_dataframe.InterceptRasterFile.item()
+with rasterio.open(raster_path) as src:
+    raster_values = src.read(1)
+    raster_crs = src.crs
 
 # Set up empty pandas DataFrame to accept output values
-my_output_dataframe = myScenario.datasheets(name="helloworldSpatialPy_IntermediateDatasheet",
-                                            empty=True)
+my_output_dataframe = myScenario.datasheets(
+    name="helloworldSpatialPy_IntermediateDatasheet",
+    empty=True)
 
 # For loop through iterations
 for i in range(1, run_settings.MaximumIteration.item() + 1):
@@ -61,7 +64,7 @@ for i in range(1, run_settings.MaximumIteration.item() + 1):
                            height=raster_values.shape[0],
                            width=raster_values.shape[1],
                            count=1, dtype=raster_values.dtype,
-                           crs=raster_map.crs) as infile:
+                           crs=raster_crs) as infile:
             infile.write(new_raster_list[ts], indexes=1)
         filename_list.append(filename)
 
