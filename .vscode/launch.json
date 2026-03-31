@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run model.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/model.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        },
+        {
+            "name": "Run model2.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/model2.py",
+            "console": "integratedTerminal",
+            "python": "${command:python.interpreterPath}"
+        }
+    ]
+}
